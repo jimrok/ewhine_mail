@@ -1,0 +1,88 @@
+<%if @error then%>
+<div class="notice error">
+  <div class="content"><%=@error%><div>
+</div>
+<%end%>
+<form method="post" name="postform" id="postform" action="<%=url_for(:controller=>:mails,:action=>:create)%>" >
+  <%if params[:mail_id] then%>
+   <input type="hidden" name="mail_id" value="<%=params[:mail_id]%>">
+   <input type="hidden" name="type" value="<%=params[:type]%>">
+   <%end%>
+   <div class="" >
+      <div class="to_info" >
+         <div class="to_info_inner">
+            <div class="to_box" >
+               <span class="namelist_label g" >收件人：</span>
+               <span class="namelist toname">
+                  <input type="text" name="to" id="to" value='<%=@to%>' />
+                  <div id="shoto_d" class="suggest" style="display:none;"></div>
+               </span>
+            </div>
+         </div>
+      </div>
+      <div class="to_info" id="simpleDiv" style="">
+         <div class="to_info_inner">
+            <div><a class="to_info_toggle g" onclick="sw(1)">抄送/密送</a></div>
+         </div>
+      </div>
+      <div class="to_info" id="moreDiv" style="display:none;">
+         <div class="to_info_unfold" style="">
+            <div class="to_info_inner">
+               <div class="to_box" >
+                  <span class="namelist_label g" onclick="S('showcc').focus();">抄　送：</span>
+                  <span class="namelist toname">
+                     <input type="text" name="cc" id="cc" value="<%=@cc%>" />
+                     <div id="showcc_d" class="suggest" style="display:none;"></div>
+                  </span>
+               </div>
+               <div class="to_box" >
+                  <span class="namelist_label g" onclick="S('showbcc').focus();">密　送：</span>
+                  <span class="namelist toname">
+                    <input type="text" name="bcc" id="bcc" value="<%=@bcc%>" />
+                     <div id="showbcc_d" class="suggest" style="display:none;"></div>
+                  </span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="content mailCompose">
+      
+         <div class="subjectLine">
+            <label class="g" >主　题：</label>
+            <span class="subjectIn">
+                <input tabindex="3" class="mailComposeSubject" name="subject" id="subject" value="<%=@subject%>"/></span>
+        </div>
+        <%if params[:type] then%>
+         <div class="infobar g"><%=  params[:type]=="3" ? "转发":"回复" %>成功后将自动附带原邮件内容</div>
+         <%end%>
+         <!--<div ><label for="content" >正文：</label></div>--><!--<div style="margin-top:5px;">-->
+         <div class="mailComposeInputWrap"><textarea tabindex="4" rows="10" onkeypress="dokey(event,this)" name="content" id="content" class="mailComposeInput" style="font-size:15px;"> <%=@content%></textarea></div>
+      </div>
+   </div>
+   <div class="actions cols2">
+    <input type="submit" value="发送" />
+    <a href="#" onclick="javascript:window.history.go(-1);return false;">取消</a>
+   </div>
+</form>
+<script>
+
+function S(e_id){
+  return document.getElementById(e_id+"_d") ;
+}
+
+function sw(f)
+{
+document.getElementById("moreDiv").style.display = f?"":"none";
+document.getElementById("simpleDiv").style.display = f?"none":"";
+}
+function dokey(e,d)
+{
+ if ((parseInt(d.style.posHeight) + 5) < d.scrollHeight )
+ {
+   d.style.posHeight=d.scrollHeight;
+ }
+}
+<% if @bcc then%>
+sw(1)
+<%end%>
+</script>

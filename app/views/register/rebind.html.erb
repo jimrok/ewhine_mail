@@ -1,0 +1,10 @@
+<div class="wrap">
+	<div class="notice success">
+		<div class="content">邮箱<span><%=@email%></span>已经绑定成功。</div>
+	</div>
+	<div class="actions cols2">
+		<a href="<%=url_for(:controller=>:register,:action=>:rebind,:email=>@email)%>">重新绑定</a>
+
+		<a href="native://exitView">返回</a>
+	</div>
+</div>

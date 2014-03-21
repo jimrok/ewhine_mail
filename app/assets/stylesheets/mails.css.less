@@ -1,0 +1,123 @@
+// Place all the styles related to the inbox controller here.
+// They will automatically be included in application.css.
+// You can use Less here: http://lesscss.org/
+html,body{margin:0;padding:0; width: 100%; font-family: sans-serif; font-size: 14px; }
+.wrap{width: 100%; }
+a{text-decoration:none;}
+.head{text-align:left;border-bottom:1px solid #e7e9eb;margin:0;padding:0; }
+.head .title{font-weight:bold;padding:5px 10px 0; margin: 0; font-size:1.1em; line-height: 1.5;}
+.head .datetime{ font-size: .9em; margin: 0; padding:2px 10px 5px; }
+.from_info{font-size:1em;line-height:150%;position:relative; margin:0; padding: 5px 10px; border-bottom:1px solid #e7e9eb;}
+.fromname{ font-weight: bold; padding: 1px 6px; line-height: 1.5em; color: #1e5494; }
+.from_info, .from_info_unfold{ position: relative; }
+.from_info_toggle{position: absolute; right:10px; top:5px; color: #1e5494; }
+.from_info_inner{ overflow: hidden; text-overflow:ellipsis;}
+.namelist_label{float: left; width: 60px; white-space:nowrap; }
+.namelist{ display: block; margin-left: 60px; color:#666;}
+.namelist b{ white-space: nowrap; color:#000; }
+.from_info_unfold{padding:0;}
+.from_info .mui_ico_darrow{position:absolute;top:5px;left:0px;}
+.bt_mast{float: right; color: #1e5494; padding-left:15px;}
+.bt_mast_read{background:none;}
+.bt_mast_unread{ background:url(/zh_CN/htmledition/images/mui/icon_mobile_unread06ed93.png) left no-repeat;}
+.g{color:#a0a0a0;}
+.mui_ico_rarrow{display:inline-block;width:10px; height:10px;background:url(/zh_CN/htmledition/images/mui/icon_rarrow06ed93.png) 0 0;margin:0  5px 0 0;}
+.mui_ico_darrow{display:inline-block;width:10px; height:10px;background:url(/zh_CN/htmledition/images/mui/icon_darrow06ed93.png) 0 0;}
+.star { background:url(/zh_CN/htmledition/images/newicon/fever06ed93.gif) no-repeat; height:16px;width:16px;margin:5px 0 0 5px;display:inline-block;overflow:hidden;}
+.nostar { background:url(/zh_CN/htmledition/images/newicon/fever_none06ed93.gif) no-repeat; height:16px;width:16px;margin:5px 0 0 5px;display:inline-block;overflow:hidden;}
+.tips_obj 		{background:#ffffe0;border-top:1px solid #e4e2ce;border-bottom:1px solid #e4e2ce;padding:10px 15px; }
+.content{line-height:150%;padding:15px 10px; font-size: 1em;}
+.mvbar{height:40px; margin:50px 5px 10px; background:none; border:none; position:relative;bottom:0; /*-webkit-box-shadow:0 0 4px #ccc; -webkit-border-radius:5px; border-radius:5px;*/}
+.mui_btn_rounded {-moz-border-radius:5px; -webkit-border-radius:5px; text-align:center; border:1px solid #CCC; background:-webkit-gradient(linear, 0 0, 0 100%, from(#F9F9F9), to(#E9E9E9));  padding:0; display:block; line-height:18px;}
+.bt_reply,.bt_replyall,.bt_forword,.bt_send,.bt_back{display:block;float:left;height:40px;overflow:hidden; border-radius:5px; background:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f1f1f1));}
+.bt_reply, .bt_replyall, .bt_forword{ width:32%; margin-right:2%;}
+.bt_forword{ margin-right:0;}
+.bt_send{width: 49%; margin-right:2%;}
+.bt_back{width: 49%;}
+
+.mvbar .bt_del .d_t{position:relative;top:-3px;}
+.reply_box{background:#e4edf6;webkit-border-radius:10px; border-radius:10px;padding:20px 10px;margin:0 2px 10px 2px;z-index:10;}
+.reply_box_title{height:30px;overflow:hidden;}
+.reply_text{width:98%;height:70px;}
+.reply_box .bt_input{padding:2px 10px;}
+.hide{display:none;}
+.hint_box .tip{padding:40px 0;text-align:center;font:bold 16px/28px Verdana;color:#5FA207;}
+
+/* compose */
+.infobar{ padding: 5px 10px; border-bottom-color:#fafafa; font-size:.9em; background-color:#f1f1f1; background: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f1f1), to(#fafafa));}
+.to_info input, .to_info textarea, .content input, .content textarea{ border: none; -webkit-appearance: none;}
+.to_info{font-size:1em;line-height:150%;position:relative; margin:0; padding:0; }
+.to_info input{font-size: 1em; width: 97%; }
+.to_info_inner > div{ border-bottom:1px solid #e7e9eb; padding: 5px 10px; }
+.toname{ font-weight: bold; line-height: 1.5em; color: #1e5494; }
+.toname input{}
+.to_info_toggle{display: block; padding: 3px 0; }
+.to_info_inner{ overflow: hidden; text-overflow:ellipsis;}
+.to_info_inner>div:last-child{margin-bottom: 0; }
+.to_info_unfold{padding:0;}
+.to_info_unfold input{ width: 97%;}
+.to_info .mui_ico_darrow{position:absolute;top:5px;left:0px;}
+.suggest{background: #fff; z-index: 999;}
+.content{padding: 5px 10px;}
+.mailCompose{ padding: 5px 0;}
+.mailComposeInputWrap{ padding:5px 10px; display:block;}
+.mailComposeInput{width: 97%;}
+.subjectLine{ padding:0 10px 5px; border-bottom:1px solid #e7e9eb;}
+.subjectLine label{ float:left; width: 60px; white-space:nowrap; }
+.subjectLine input{ width:97%; font-size:1em; vertical-align:middle; }
+.subjectIn{ display: block; margin-left:60px;}
+
+
+/* attach */
+.attach{ display:block; margin: 10px 5px; height:30px; color:#1e5494; line-height:30px; border: 1px solid #e7e9eb; padding: 5px 8px; font-size:1em; white-space:nowrap; overflow:hidden; text-overflow: ellipsis; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; background:-webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f1));}
+.attach img{ vertical-align: middle;}
+.bigattach{ background: url(/zh_CN/htmledition/images/mui/icon_mobile_rarrow.png) no-repeat 98% center, -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f1));}
+
+/* composeto input */
+.to_box{ overflow: hidden;}
+.tocontainer:after{ content:"";}
+.tocontainer > div{display: inline-block; white-space: nowrap; }
+input.ipwidth{ font-size:.9em; }
+input.ipwidth:focus{ background:none; }
+.rmto{ background: #F1F1F1; border-radius: 5px; overflow: hidden; padding: 8px; }
+.rmto_info{ white-space: nowrap; text-overflow: ellipsis; overflow: hidden; color:#333;}
+input.rmto_btn{ border: 1px solid #999; background:#fff; border-radius: 3px; float: left; margin-right: 10px; vertical-align: middle; text-align:center; width: 4em;}
+
+
+.attach_info {
+display: block;
+width: 100%;
+overflow: hidden;
+text-overflow: ellipsis;
+	 a{
+		line-height: 30px;
+		white-space: nowrap;
+		font-size: 14px;
+		color: #5d7f9e;
+		}
+	.gray {
+	color: #a0a0a0;
+	margin-left: .5em;
+	}
+}
+.attach_wrap {
+margin: 10px 5px;
+overflow: hidden;
+background: -webkit-gradient(linear, 0 100%, 0 0, from(#f1f1f1), to(#fff));
+background: -moz-linear-gradient(center bottom, #f1f1f1 0%, #fff 100%);
+border: 1px solid #e7e9eb;
+-webkit-border-radius: 5px;
+webkit-radius: 5px;
+	a {
+	display: block;
+	height: 30px;
+	margin: 0;
+	padding: 5px 25px 5px 8px;
+	line-height: 30px;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 14px;
+	color: #5d7f9e;
+	}
+
+}

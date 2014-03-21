@@ -1,0 +1,52 @@
+.notice {
+    width: 100%;
+    text-align: center;
+    padding: 0.5em;
+    margin: 0.5em;
+    &.error .content {
+        color:red;
+    }
+    &.success .content {
+        color:blue;
+    }
+    a{
+			display: inline-block;
+			text-align: center;
+			background: -webkit-gradient(linear, 0 100%, 0 0, from(#f1f1f1), to(#fff));
+			background: -moz-linear-gradient(center bottom, #f1f1f1 0%, #fff 100%);
+			border: 1px solid #e7e9eb;
+			-webkit-border-radius: 5px;
+			webkit-radius: 5px;
+			padding: 0.5em 2em;
+			color: #333;
+    }
+}
+
+@media only screen and (max-width:480px) 
+{ 
+    .actions{
+        margin:2em 0 4em 0;
+        input,a{
+            display: inline-block;
+            margin-left: 2%;
+            text-align: center;
+            background: -webkit-gradient(linear, 0 100%, 0 0, from(#f1f1f1), to(#fff));
+            background: -moz-linear-gradient(center bottom, #f1f1f1 0%, #fff 100%);
+            border: 1px solid #e7e9eb;
+            -webkit-border-radius: 5px;
+            webkit-radius: 5px;
+            padding: 0.5em 0;
+            color: #333;
+            width: 80%;
+            &.btn-large{
+                font-size: 1.5em;
+            }
+        }
+        &.cols3 a,&.cols3 input{
+            width: 30%;
+        }
+        &.cols2 a,&.cols2 input{
+            width: 40%;
+        }
+    }
+}
