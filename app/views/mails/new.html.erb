@@ -4,10 +4,10 @@
 </div>
 <%end%>
 <form method="post" name="postform" id="postform" action="<%=url_for(:controller=>:mails,:action=>:create)%>" >
-  <%if params[:mail_id] then%>
-   <input type="hidden" name="mail_id" value="<%=params[:mail_id]%>">
-   <input type="hidden" name="type" value="<%=params[:type]%>">
-   <%end%>
+  <%if @mail_id then%>
+   <input type="hidden" name="mail_id" value="<%=@mail_id%>">
+   <input type="hidden" name="type" value="<%=@type%>">
+  <%end%>
    <div class="" >
       <div class="to_info" >
          <div class="to_info_inner">

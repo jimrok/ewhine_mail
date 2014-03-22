@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'digest/md5'
 require 'fileutils'
 
@@ -28,7 +29,8 @@ class MailsController < ApplicationController
 
 	def create
 		init_smtp
-		mail_id=params[:mail_id]
+		mail_id=@mail_id=params[:mail_id]
+		m_type=@type=params[:type]
 		if mail_id.present? then
 			object_s=$redis.get("mail:#{mail_id}:object")
 			if object_s then
@@ -38,9 +40,11 @@ class MailsController < ApplicationController
 				render :mail_not_found
 				return
 			end
-			#拆解附件
-			mail_root=mail_root(mail_id)
-			extract_attachments mail_id
+			#转发邮件的时候，需要拆解附件
+			if m_type=="3" then
+				mail_root=mail_root(mail_id)
+				extract_attachments mail_id
+			end
 		end
 		m_from=@from=session[:email]
 		m_to=@to=params[:to]
@@ -63,12 +67,22 @@ class MailsController < ApplicationController
 				html_part do
 					content_type 'text/html; charset=UTF-8'
 					if mail then
-						body m_content+"<div>----以下是原始邮件---</div>"+mail.content
+						p mail.from_addrs.first
+						prepend_text = %Q{
+						<div>------------------ Original ------------------</div>
+						<div style="font: 12px/1.5 'Lucida Grande';background:#efefef;color:#666666;padding:8px;">
+						<div><b style="color:#999;">发件人:</b>#{CGI::escapeHTML(mail.from_addrs.first)}</div>
+						<div><b style="color:#999;">收件人:</b>#{CGI::escapeHTML(mail.to_addrs.join(";"))}</div>
+						<div><b style="color:#999;">发送时间:</b>#{I18n.l mail.date}</div>
+						<div><b style="color:#999;">主题:</b>#{mail.subject}</div>
+						</div>
+						}
+						body m_content+prepend_text+mail.content
 					else
 						body m_content
 					end
 				end
-				if mail_root && File.exist?( mail_root) then
+				if m_type=="3" &&  mail_root && File.exist?( mail_root) then
 					Dir.foreach(mail_root) do|filename|
 						next if filename == '.' or filename == '..'
 						add_file mail_root+filename 
