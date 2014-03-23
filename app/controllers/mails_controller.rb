@@ -142,7 +142,5 @@ class MailsController < ApplicationController
 		mail
 	end
 
-	def mail_root mail_id
-		"#{Rails.root}/content/#{Digest::MD5.hexdigest(mail_id)}/"
-	end
+
 end

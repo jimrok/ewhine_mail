@@ -4,6 +4,7 @@ development:
   OcuKey: "50d162f720f7c5100ef64f53daf10b65"
   host: "http://m.dehuinet.com:3001"
   server_host: "http://dev.dehuinet.com:81"
+  domain: "dehui220.com.cn"
   imap:
     address: "mail.dehui220.com.cn"
     port: 993
@@ -21,6 +22,7 @@ production:
   OcuKey: "50d162f720f7c5100ef64f53daf10b65"
   host: "http://m.dehuinet.com:3001"
   server_host: "http://dev.dehuinet.com:81"
+  domain: "dehui220.com.cn"
   imap:
     address: "mail.dehui220.com.cn"
     port: 993

@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'nokogiri'
 gem 'log4r'
 
+#scheduler
+gem 'rufus-scheduler'
 
 # For redis store.
 gem "redis"

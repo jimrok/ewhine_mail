@@ -114,6 +114,8 @@ GEM
     redis-objects (0.8.0)
       redis (>= 3.0.2)
     ref (1.0.5)
+    rufus-scheduler (3.0.4)
+      tzinfo
     slop (3.4.7)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -163,6 +165,7 @@ DEPENDENCIES
   rails-i18n
   redis
   redis-objects
+  rufus-scheduler
   sqlite3
   sucker_punch
   therubyracer
