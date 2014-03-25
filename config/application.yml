@@ -2,8 +2,8 @@
 development:
   OcuID: "97e7ded242a95b762a1c74200523af5c"
   OcuKey: "50d162f720f7c5100ef64f53daf10b65"
-  host: "http://m.dehuinet.com:3001"
-  server_host: "http://dev.dehuinet.com:81"
+  host: "http://192.168.100.20:3001"
+  server_host: "http://192.168.100.20:3000"
   domain: "dehui220.com.cn"
   imap:
     address: "mail.dehui220.com.cn"

@@ -13,21 +13,27 @@ class RegisterController < ApplicationController
 		if(password.empty?||@email.empty?) then
 			@error="请输入密码。"
 			render :index
+			return
 		end
 		#validate mail password
 		begin
-			config_hash=CONFIG[:imap]
-			imap = Net::IMAP.new(config_hash["address"], config_hash["port"], config_hash["enable_ssl"], nil, false)
-			imap.login(@email,password)
+			init_imap  @email,password
+			# config_hash=CONFIG[:imap]
+			# imap = Net::IMAP.new(config_hash["address"], config_hash["port"], config_hash["enable_ssl"], nil, false)
+			# imap.authenticate('LOGIN', @email,password)
+			Mail.first
+			# imap.login(@email,password)
 			$redis.set("email:#{@email}:pass",password)
 			session[:email]=@email
 			session[:pass]=password
 		rescue Exception=>e
+			Rails.logger.error "login mail server   error:#{e.message}\n\n#{e.backtrace.join("\n")}"
 		    @error="密码输入不正确，请重试。"
 		    render :index
-		ensure
-			 imap.disconnect if imap
-		end
+			return
+        end
+		@notice="绑定邮箱#{@email}成功。"
+		render "common/success"
 	end
 	def rebind
 		@email=params[:email]

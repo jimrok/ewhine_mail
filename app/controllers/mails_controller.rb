@@ -4,7 +4,11 @@ require 'fileutils'
 
 class MailsController < ApplicationController
 	skip_before_filter :authenticate_user , :only => [:download]
-	Expiration = 60*60*24
+	Expiration = 60*60*24*30
+	def index
+		@notice="请从客户端访问"
+		render "common/success"
+	end
 	def new
 		@mail_id=params[:mail_id]
 		@type=params[:type]||"0"
@@ -95,6 +99,8 @@ class MailsController < ApplicationController
 			render :new
 		ensure
 		end
+		@notice="邮件发送成功。"
+		render "common/success"
 	end
 
 	def show

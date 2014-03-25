@@ -1,8 +1,6 @@
-<%if @error then%>
-<div class="notice error">
-  <div class="content"><%=@error%><div>
-</div>
-<%end%>
+    <%if @error then%>
+  <%=render :template=>"common/error"%> 
+  <%end%>
 <form method="post" name="postform" id="postform" action="<%=url_for(:controller=>:mails,:action=>:create)%>" >
   <%if @mail_id then%>
    <input type="hidden" name="mail_id" value="<%=@mail_id%>">
@@ -52,8 +50,8 @@
             <span class="subjectIn">
                 <input tabindex="3" class="mailComposeSubject" name="subject" id="subject" value="<%=@subject%>"/></span>
         </div>
-        <%if params[:type] then%>
-         <div class="infobar g"><%=  params[:type]=="3" ? "转发":"回复" %>成功后将自动附带原邮件内容</div>
+        <%if @type!="0" then%>
+         <div class="infobar g"><%=  @type=="3" ? "转发":"回复" %>成功后将自动附带原邮件内容</div>
          <%end%>
          <!--<div ><label for="content" >正文：</label></div>--><!--<div style="margin-top:5px;">-->
          <div class="mailComposeInputWrap"><textarea tabindex="4" rows="10" onkeypress="dokey(event,this)" name="content" id="content" class="mailComposeInput" style="font-size:15px;"> <%=@content%></textarea></div>
@@ -61,7 +59,11 @@
    </div>
    <div class="actions cols2">
     <input type="submit" value="发送" />
+    <%if @mail_id.nil?%>
+    <a href="native://exitView">返回</a>
+    <%else%>
     <a href="#" onclick="javascript:window.history.go(-1);return false;">取消</a>
+    <%end%>
    </div>
 </form>
 <script>

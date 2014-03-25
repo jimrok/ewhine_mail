@@ -1,0 +1,14 @@
+<div id="error_div" class="notice error" style="z-index:2000">
+  <%= image_tag "icon-fail.png" %>
+  <div class="content">
+  	<%=@error%>
+  </div>
+  <a class="btn" href="#" onclick="javascript:closeDiv(this)">确定</a>
+</div>
+<div id="modal-backdrop" class="modal-backdrop  in"></div>
+<script type="text/javascript">
+function closeDiv (e) {
+	document.getElementById("error_div").style.display="none"
+	document.getElementById("modal-backdrop").style.display="none"
+}
+</script>

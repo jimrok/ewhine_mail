@@ -1,32 +1,55 @@
 .notice {
-    width: 100%;
     text-align: center;
-    padding: 0.5em;
-    margin: 0.5em;
-    &.error .content {
-        color:red;
+    // padding: 0.5em;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top:-150px;
+    margin-left:-150px;
+    width: 300px;
+    height: 300px;
+    &.error {
+        background-color: #F8F8F8;
+        border: solid 1px #DDD;
+        -webkit-border-radius: 10px;
+        webkit-radius: 10px;
+        img{
+            margin-top:3em;
+        }
+        .content {
+            color:red;
+            font-size: 1.5em;
+        }
     }
-    &.success .content {
-        color:blue;
+    &.success {
+        .content {
+            color:#3691df;
+            font-size: 1.5em;
+        }
     }
-    a{
-			display: inline-block;
-			text-align: center;
-			background: -webkit-gradient(linear, 0 100%, 0 0, from(#f1f1f1), to(#fff));
-			background: -moz-linear-gradient(center bottom, #f1f1f1 0%, #fff 100%);
-			border: 1px solid #e7e9eb;
-			-webkit-border-radius: 5px;
-			webkit-radius: 5px;
-			padding: 0.5em 2em;
-			color: #333;
+    a {
+        text-decoration: none;
+        color: #333;
+        font-size: 1.2em;
+    }
+    .btn {
+        display: inline-block;
+        text-align: center;
+        background: -webkit-gradient(linear, 0 100%, 0 0, from(#f1f1f1), to(#fff));
+        background: -moz-linear-gradient(center bottom, #f1f1f1 0%, #fff 100%);
+        border: 1px solid #e7e9eb;
+        -webkit-border-radius: 5px;
+        webkit-radius: 5px;
+        padding: 0.5em 2em;
+        margin: 1em auto;
+        color: #333;
     }
 }
-
-@media only screen and (max-width:480px) 
-{ 
-    .actions{
+@media only screen and (max-width:480px) {
+    .actions {
         margin:2em 0 4em 0;
-        input,a{
+        input, a {
             display: inline-block;
             margin-left: 2%;
             text-align: center;
@@ -38,15 +61,28 @@
             padding: 0.5em 0;
             color: #333;
             width: 80%;
-            &.btn-large{
+            &.btn-large {
                 font-size: 1.5em;
             }
         }
-        &.cols3 a,&.cols3 input{
+        &.cols3 a, &.cols3 input {
             width: 30%;
         }
-        &.cols2 a,&.cols2 input{
+        &.cols2 a, &.cols2 input {
             width: 40%;
         }
     }
+}
+.modal-backdrop, .modal-backdrop.fade.in {
+opacity: 0.6;
+filter: alpha(opacity=80);
+}
+.modal-backdrop {
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+z-index: 1040;
+background-color: #000000;
 }
