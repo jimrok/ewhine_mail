@@ -5,7 +5,7 @@ module MailHelper
 	def mail_root mail_id
 		"#{Rails.root}/contents/#{Digest::MD5.hexdigest(mail_id)}/"
 	end
-	def init_imap name,password
+	def init_imap (name=nil,password=nil)
 		email=name||session[:email]	
 		pass=password||session[:pass]
 		config_hash=CONFIG[:imap]

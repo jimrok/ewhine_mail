@@ -4,8 +4,7 @@ require 'cgi'
 require 'net/http'
 require 'net/https'
 class ConnectorController < ApplicationController
-	skip_before_filter :authenticate_user, :only => [:service,:receive]
-
+	skip_before_filter :authenticate_user
 
 	def service
 		if !check_url(request.headers)
@@ -24,7 +23,7 @@ class ConnectorController < ApplicationController
 			event_type=doc.xpath('//xml/Event').first.text
 			if event_type=="subscribe" then
 				$redis.set("mail:#{mail}:subscribed",1)
-				render :text=>"<a href='#{CONFIG[:host]}/register'>绑定邮箱</a>"
+				render :text=>"绑定邮箱#{CONFIG[:host]}/register"
 				return
 			elsif event_type=="unsubscribe" then
 				$redis.del("mail:#{mail}:subscribed")
