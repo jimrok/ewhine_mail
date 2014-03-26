@@ -84,7 +84,7 @@ module MailHelper
 				users=m_mail.to
 				users.concat m_mail.cc if m_mail.cc.present?
 				users.concat m_mail.bcc if m_mail.bcc.present?
-				users.uniq.delete_if {|x| ! x.end_with? CONFIG[:domain] } 
+				users.uniq.delete_if {|x| ((! x.end_with? CONFIG[:domain]) ||$redis.get("mail:#{x}:subscribed").nil?)} 
 				if users.length>0 
 					send_ocu_message ({:users=>users.uniq.join(","),:subject=>m_mail.subject+(m_mail.attachments.length>0 ? "[附件]":""),:mail_id=>m_mail.id,:from=>m_mail.from.first,:content=>m_mail.content})
 				end
