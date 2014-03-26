@@ -76,6 +76,7 @@ module MailHelper
 
 	def receive_new_email
 		begin
+			Rails.logger.debug "start receive mail."
 			init_imap CONFIG[:reminder_mail],AesHelper.decrypt(CONFIG[:reminder_password])
 			emails=Mail.find({:delete_after_find=>true,:count=>50})
 			emails.each do|email|
