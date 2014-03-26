@@ -1,14 +1,17 @@
 
-<div class="wrap" style="text-align:center">
+<div class="wrap" style="text-align:center;">
 	<%if @error then%>
 	<%=render :template=>"common/error"%>	
 	<%end%>
-	<p style="color:#3691df;font-size:1.5em;margin-bottom:1em">请绑定您的邮箱</p>
-	<form method="post" action="<%=url_for(:controller=>:register,:action=>:create)%>">
+	<p style="color:#3691df;font-size:2em;margin-bottom:2em">重新绑定邮箱</p>
+	<form method="post" style="margin:0" action="<%=url_for(:controller=>:register,:action=>:create)%>">
 		<input type="hidden" name="email" value="<%=@email%>">
-		<input type="password" style="width:80%;font-size:1em;border:none;-webkit-appearance: none;line-height:1.5em;font-size:1.5em"  name="password" placeholder="密码" >
-		<div class="actions ">
-			<input  class="btn-large" style="margin-left:0" type="submit" value="绑定"/>
+		<div style="color:#A9A9A9;margin-bottom:10px;font-size:1.4em">请输入<%=@email%>的密码：</div>
+		<div style="margin:20px">
+			<input type="password" style="padding:5px;width:95%;border:solid 1px #ddd;-webkit-appearance: none;font-size:1.5em;height:1.5em;line-height:1.5em"  name="password" placeholder="密码" >
+			<div class="actions ">
+				<input  class="btn-large" style="margin-left:0" type="submit" value="确定"/>
+			</div>
 		</div>
 	</form>
 </div>

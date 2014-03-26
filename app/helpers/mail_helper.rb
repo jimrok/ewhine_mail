@@ -1,3 +1,4 @@
+include AesHelper
 module MailHelper
 	def hmacsha1(data, key)
 		Base64.encode64(OpenSSL::HMAC.digest('sha1',key, data)).strip!
@@ -75,7 +76,7 @@ module MailHelper
 
 	def receive_new_email
 		begin
-			init_imap "reminder@dehui220.com.cn","1qaz2WSX"
+			init_imap CONFIG[:reminder_mail],AesHelper.decrypt(CONFIG[:reminder_password])
 			emails=Mail.find({:delete_after_find=>true,:count=>50})
 			emails.each do|email|
 				m_mail=Email.new(email)
