@@ -6,8 +6,8 @@ class MailsController < ApplicationController
 	skip_before_filter :authenticate_user , :only => [:download]
 	Expiration = 60*60*24*30
 	def index
-		@notice="请从客户端访问"
-		render "common/success"
+		@notice="请从移动客户端访问。"
+		render "common/info"
 	end
 	def new
 		@mail_id=params[:mail_id]
