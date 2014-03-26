@@ -35,7 +35,7 @@
             <!-- <div class="content">普通附件</div> -->
             <%@mail.attachments.each do|att|%>
             <div class="attach_wrap">
-                <a href="<%=url_for(:controller=>:mails,:action=>:download,:mail_id=>@mail.id,:filename=>URI::escape(att.filename))%>" target="_blank"><span class="mui_li"><span class="attach_info"><%=att.filename%>  <span class="gray"><%=number_to_human_size att.size%> </span></span></span></a>
+                <a href="<%=url_for(:controller=>:mails,:action=>:download,:mail_id=>@mail.id,:att_id=>att.id,:filename=>URI::escape(att.filename))%>" target="_blank"><span class="mui_li"><span class="attach_info"><%=att.filename%>  <span class="gray"><%=number_to_human_size att.size%> </span></span></span></a>
             </div>
             <%end%>
         </div>

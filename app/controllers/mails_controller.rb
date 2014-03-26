@@ -121,14 +121,20 @@ class MailsController < ApplicationController
 	def download
 		mail_id=params[:mail_id]
 		filename=URI.decode(params[:filename])
-		att_path=mail_root(mail_id)+filename
+		att_path=mail_root(mail_id)+params[:att_id]
 
 		extract_attachments(mail_id) unless File.exist?(att_path)
 
 		send_file att_path, :filename => filename
 
 	end
-
+	def images
+		mail_id=params[:mail_id]
+		att_path=mail_root(mail_id)+params[:att_id]
+		if stale?(:etag => [mail_id, params[:att_id]])
+			send_file att_path,:disposition => 'inline'
+		end
+	end
 	def extract_attachments mail_id
 		mail_root_path= mail_root mail_id
 		if(File.exist? mail_root_path) then
@@ -137,7 +143,8 @@ class MailsController < ApplicationController
 		FileUtils.mkdir_p(mail_root_path)
 		mail = find_mail mail_id
 		mail.attachments.each do|att|
-			File.open( mail_root_path+att.filename , "w+b", 0644 ) { |f| f.write att.body.decoded }
+			att_id=att.content_id
+			File.open( mail_root_path+att_id.gsub(/[<>]/,"") , "w+b", 0644 ) { |f| f.write att.body.decoded }
 		end
 	end
 

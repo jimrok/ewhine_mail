@@ -21,12 +21,13 @@ class Email
 		else
 			@content=mail.body.decoded.force_encoding("UTF-8")
 		end
+		@content=@content.gsub(/\"cid:(.+?)\"/,'"/ewhine_mail/mails/images?att_id=\1&mail_id='+@id+'"');
 		if mail.attachments.length then
 			@attachments=[]
 			mail.attachments.each do|att|
 				attach=Attachment.new
 				attach.filename=att.filename
-				attach.id=att.content_id
+				attach.id=att.content_id.gsub(/[<>]/,"");
 				# att.content_disposition.match(/size=(\d+)/)
 				attach.size=att.body.decoded.size
 				@attachments<<attach

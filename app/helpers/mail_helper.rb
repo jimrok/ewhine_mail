@@ -94,7 +94,8 @@ module MailHelper
 				end
 				FileUtils.mkdir_p(mail_root_path)
 				email.attachments.each do|att|
-					File.open( mail_root_path+att.filename , "w+b", 0644 ) { |f| f.write att.body.decoded }
+					att_id=att.content_id
+					File.open( mail_root_path+att_id.gsub(/[<>]/,"") , "w+b", 0644 ) { |f| f.write att.body.decoded }
 				end
 			end
 		rescue Exception =>e
