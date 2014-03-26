@@ -7,4 +7,4 @@ scheduler.every("60") do
 	receive_new_email
 end
 
-scheduler.join
+# scheduler.join
