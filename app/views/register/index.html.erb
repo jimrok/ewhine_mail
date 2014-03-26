@@ -3,7 +3,7 @@
 	<%if @error then%>
 	<%=render :template=>"common/error"%>	
 	<%end%>
-	<p style="color:#3691df;font-size:2em;margin-bottom:2em">重新绑定邮箱</p>
+	<p style="color:#3691df;font-size:2em;margin-bottom:2em">绑定邮箱</p>
 	<form method="post" style="margin:0" action="<%=url_for(:controller=>:register,:action=>:create)%>">
 		<input type="hidden" name="email" value="<%=@email%>">
 		<div style="color:#A9A9A9;margin-bottom:10px;font-size:1.4em">请输入<%=@email%>的密码：</div>
