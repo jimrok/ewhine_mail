@@ -1,8 +1,10 @@
 require 'rubygems'
 require 'rufus/scheduler'
 include MailHelper
-scheduler = Rufus::Scheduler.new
+scheduler = Rufus::Scheduler.new(:lockfile => ".rufus-scheduler.lock")
 
-scheduler.every("60s") do
+scheduler.every("60") do
 	receive_new_email
 end
+
+scheduler.join
