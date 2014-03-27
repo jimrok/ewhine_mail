@@ -52,7 +52,6 @@ class Build
       FileUtils.cp("config.ru", temp)
       FileUtils.cp("Gemfile", temp)
       FileUtils.cp("Gemfile.lock", temp)
-      FileUtils.cp("Gemfile~", temp)
       FileUtils.cp("Rakefile", temp)
       FileUtils.cp("build.rb", temp)
 
@@ -265,7 +264,6 @@ class Build
     FileUtils.mv("#{deploy_temp_path}/Rakefile", "#{path}/current",:force=>true)
     FileUtils.mv("#{deploy_temp_path}/Gemfile", "#{path}/current",:force=>true)
     FileUtils.mv("#{deploy_temp_path}/Gemfile.lock", "#{path}/current",:force=>true)
-    FileUtils.mv("#{deploy_temp_path}/Gemfile~", "#{path}/current",:force=>true)
     FileUtils.cp("#{deploy_temp_path}/build.rb", "#{path}/current")
 
 
