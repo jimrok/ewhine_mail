@@ -14,12 +14,11 @@ gem 'rufus-scheduler'
 
 # For redis store.
 gem "redis"
-gem "em-hiredis","0.1.1"
-gem "hiredis","0.4.5"
-gem 'redis-objects', :require => 'redis/objects'
+gem "hiredis","~>0.4.5"
 
 gem "mail"
 gem 'rails-i18n'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
