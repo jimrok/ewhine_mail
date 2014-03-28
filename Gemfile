@@ -1,7 +1,7 @@
 source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.16'
-gem 'thin','~>1.5.0'
+gem 'rails', '3.2.17'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -12,14 +12,15 @@ gem 'log4r'
 #scheduler
 gem 'rufus-scheduler'
 
+gem 'eventmachine'
+
 # For redis store.
 gem "redis"
-gem "em-hiredis","0.1.1"
-gem "hiredis","0.4.5"
-gem 'redis-objects', :require => 'redis/objects'
+gem "hiredis","~>0.4.5"
 
 gem "mail"
 gem 'rails-i18n'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -32,8 +33,10 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
 group :development, :test do
 
+  gem 'thin','~>1.5.0'
   gem 'quiet_assets'
   gem 'sucker_punch'
   #gem 'rtags', '~> 0.98'
@@ -43,7 +46,7 @@ group :development, :test do
   gem 'binding_of_caller'
 end
 
-
+gem 'rainbows'
 gem 'jquery-rails'
 gem 'typhoeus'
 # To use ActiveModel has_secure_password

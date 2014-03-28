@@ -5,6 +5,8 @@ CONFIG = YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
 CONFIG.merge! CONFIG.fetch(Rails.env, {})
 CONFIG.symbolize_keys!
 
+I18n.enforce_available_locales = false
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -58,6 +60,7 @@ module EwhineMail
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.prefix = "/ewhine_mail/assets"
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
