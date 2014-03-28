@@ -12,6 +12,8 @@ gem 'log4r'
 #scheduler
 gem 'rufus-scheduler'
 
+gem 'eventmachine'
+
 # For redis store.
 gem "redis"
 gem "hiredis","~>0.4.5"

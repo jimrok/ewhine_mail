@@ -155,6 +155,7 @@ PLATFORMS
 
 DEPENDENCIES
   binding_of_caller
+  eventmachine
   hiredis (~> 0.4.5)
   jquery-rails
   less-rails
