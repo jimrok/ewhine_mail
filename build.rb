@@ -38,7 +38,7 @@ class Build
       system "bundle install --local"
 
       puts "rake assets:precompile ..."
-      system "bundle exec rake RAILS_ENV=production RAILS_GROUPS=assets assets:precompile"
+      system "bundle exec rake RAILS_ENV=production RAILS_RELATIVE_URL_ROOT=/ewhine_mail assets:precompile"
 
       puts "copy files to temp directory ..."
 
