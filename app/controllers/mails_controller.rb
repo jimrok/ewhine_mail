@@ -119,6 +119,15 @@ class MailsController < ApplicationController
 			@mail=Email.new(server_mail)
 			$redis.setex("mail:#{mail_id}:object",Expiration,Marshal.dump(@mail))
 		end
+		#check permission
+		users=@mail.from.concat @mail.to
+		users.concat @mail.cc if @mail.cc.present?
+		users.concat @mail.bcc if @mail.bcc.present?
+		unless users.include? session[:email] then
+			@notice="您没有权限查看此邮件。"
+			render :template => "common/info", :status => 401
+			return
+		end
 	end
 	def download
 		mail_id=params[:mail_id]

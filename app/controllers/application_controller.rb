@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
 				# 	render :template => "register/index"
 				# end
 			end
+		elsif(params[:sso_key_value]&& params[:sso_key_value]!=session[:email]) then
+				@notice="您的请求不正确，请重新从客户端进入。"
+				render :template => "common/info", :status => 401
+
 		end
 	end
 	def check_url (hash)
@@ -27,8 +31,8 @@ class ApplicationController < ActionController::Base
 		nonce=hash["nonce"]
 		open_id=hash["open_id"]
 		data = ""
-	    data << timestamp.to_s
-        data << nonce.to_s
+		data << timestamp.to_s
+		data << nonce.to_s
 		token =="#{CONFIG[:OcuID]}:#{hmacsha1(data, CONFIG[:OcuKey])}"
 	end
 	
