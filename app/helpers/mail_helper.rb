@@ -7,8 +7,8 @@ module MailHelper
 		"#{Rails.root}/contents/#{Digest::MD5.hexdigest(mail_id)}/"
 	end
 	def init_imap (name=nil,password=nil)
-		email=name||session[:email]	
-		pass=password||session[:pass]
+		email = name || session[:email]	
+		pass= password || session[:pass]
 		config_hash=CONFIG[:imap]
 		config_hash.symbolize_keys!.merge!(:user_name=>email,:password=>pass)
 		Mail.defaults do

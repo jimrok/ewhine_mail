@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
 			end
 		end
 	end
+
 	def check_url (hash)
 		token=hash["token"]
 		timestamp=hash["timestamp"]
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
 		data = ""
 	    data << timestamp.to_s
         data << nonce.to_s
-		token =="#{CONFIG[:OcuID]}:#{hmacsha1(data, CONFIG[:OcuKey])}"
+		token == "#{CONFIG[:OcuID]}:#{hmacsha1(data, CONFIG[:OcuKey])}"
 	end
 	
 end
