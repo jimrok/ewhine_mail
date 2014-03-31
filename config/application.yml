@@ -5,8 +5,8 @@ development:
   host: "http://192.168.100.20:3001"
   server_host: "http://192.168.100.20:3000"
   domain: "dehui220.com.cn"
-  reminder_mail: "reminder@dehui220.com.cn"
-  reminder_password: "5ec218c78cb8b5d6d18040e2b35d91a4"
+  admin_mail: "MinyouAdmin@dehui220.com.cn"
+  admin_password: "5ec218c78cb8b5d6d18040e2b35d91a4"
   imap:
     address: "mail.dehui220.com.cn"
     port: 993
@@ -25,8 +25,8 @@ production:
   host: "http://m.dehuinet.com:3001"
   server_host: "http://huatai.dehuinet.com:84"
   domain: "dehui220.com.cn"
-  reminder_mail: "reminder@dehui220.com.cn"
-  reminder_password: "5ec218c78cb8b5d6d18040e2b35d91a4"
+  admin_mail: "MinyouAdmin@dehui220.com.cn"
+  admin_password: "5ec218c78cb8b5d6d18040e2b35d91a4"
   imap:
     address: "192.168.100.220"
     port: 993

@@ -9,15 +9,15 @@ class ApplicationController < ActionController::Base
 				@notice="您的请求不正确，请重新从客户端进入。"
 				render :template => "common/info", :status => 401
 			else
-				email=session[:email]=params[:sso_key_value]
-				pass=$redis.get("email:#{email}:pass")
-				if pass then
-					session[:pass]=pass
-				else
-					#还没有做过邮箱绑定
-					@email=email
-					render :template => "register/index"
-				end
+				session[:email]=params[:sso_key_value]
+				# pass=$redis.get("email:#{email}:pass")
+				# if pass then
+				# 	session[:pass]=pass
+				# else
+				# 	#还没有做过邮箱绑定
+				# 	@email=email
+				# 	render :template => "register/index"
+				# end
 			end
 		end
 	end

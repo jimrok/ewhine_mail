@@ -4,7 +4,7 @@ require 'fileutils'
 
 class MailsController < ApplicationController
 	skip_before_filter :authenticate_user , :only => [:download]
-	Expiration = 60*60*24*30
+	Expiration = 60*60*24*180
 	def index
 		@notice="请从移动客户端访问。"
 		render "common/info"
@@ -32,7 +32,8 @@ class MailsController < ApplicationController
 	end
 
 	def create
-		init_smtp
+		init_smtp CONFIG[:admin_mail],AesHelper.decrypt(CONFIG[:admin_password])
+		# init_smtp
 		mail_id=@mail_id=params[:mail_id]
 		m_type=@type=params[:type]
 		if mail_id.present? then
@@ -97,6 +98,7 @@ class MailsController < ApplicationController
 			Rails.logger.error e
 			@error="邮件发送错误，请检查您的数据并重试。"
 			render :new
+			return
 		ensure
 		end
 		@notice="邮件发送成功。"
