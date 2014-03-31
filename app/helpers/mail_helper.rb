@@ -7,8 +7,10 @@ module MailHelper
 		"#{Rails.root}/contents/#{Digest::MD5.hexdigest(mail_id)}/"
 	end
 	def init_imap (name=nil,password=nil)
-		email=name	
-		pass=password
+
+		email = name	
+		pass = password
+
 		config_hash=CONFIG[:imap]
 		config_hash.symbolize_keys!.merge!(:user_name=>email,:password=>pass)
 		Mail.defaults do
@@ -43,7 +45,7 @@ module MailHelper
 			description="<font color='black'>标题：</font><font color='green'>#{subject}</font><br><font color='black'>发件人：</font><font color='green'>#{from}</font><br><br>#{content}"
 			article={article_count:1,articles:[{title:title,description:description,url:"#{CONFIG[:host]}/ewhine_mail/mails/show?mail_id=#{mail_id}"}]}
 			timestamp = Time.now.to_i
-			signed_url = hmacsha1(api_url + "?timestamp=#{timestamp}", CONFIG[:OcuKey])
+			signed_url = hmacsha1(api_url + "?timestamp=#{timestamp}", CONFIG[:OcuSecret])
 			request = Typhoeus::Request.new(api_url,:body=>{:content_type=>1,:direct_to_user_ids=>user_mail,:body=>article.to_json},:method=>:post,:ssl_verifypeer=>false,:timeout=>20,:headers=>{'TIMESTAMP'=>timestamp,'AUTHORIZATION'=>"mac #{CONFIG[:OcuID]}:#{signed_url}"})
 
 

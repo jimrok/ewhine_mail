@@ -1,7 +1,7 @@
 #application config
 development:
   OcuID: "97e7ded242a95b762a1c74200523af5c"
-  OcuKey: "50d162f720f7c5100ef64f53daf10b65"
+  OcuSecret: "50d162f720f7c5100ef64f53daf10b65"
   host: "http://192.168.100.20:3001"
   server_host: "http://192.168.100.20:3000"
   domain: "dehui220.com.cn"
@@ -21,7 +21,7 @@ test:
 
 production:
   OcuID: "a0353b3417f22f1de30a836ba6ac3400"
-  OcuKey: "b2b6acb1b01044c3bd611e51c1e2fc3c"
+  OcuSecret: "b2b6acb1b01044c3bd611e51c1e2fc3c"
   host: "http://m.dehuinet.com:3001"
   server_host: "http://huatai.dehuinet.com:84"
   domain: "dehui220.com.cn"
