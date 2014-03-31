@@ -6,17 +6,18 @@ class ApplicationController < ActionController::Base
 	def authenticate_user
 		if session[:email].nil? then
 			if !check_url(params)	 then
-				render :template => "common/session_timeout", :status => 401
+				@notice="您的请求不正确，请重新从客户端进入。"
+				render :template => "common/info", :status => 401
 			else
-				email=session[:email]=params[:sso_key_value]
-				pass=$redis.get("email:#{email}:pass")
-				if pass then
-					session[:pass]=pass
-				else
-					#还没有做过邮箱绑定
-					@email=email
-					render :template => "register/index"
-				end
+				session[:email]=params[:sso_key_value]
+				# pass=$redis.get("email:#{email}:pass")
+				# if pass then
+				# 	session[:pass]=pass
+				# else
+				# 	#还没有做过邮箱绑定
+				# 	@email=email
+				# 	render :template => "register/index"
+				# end
 			end
 		end
 	end
