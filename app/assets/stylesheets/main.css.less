@@ -46,12 +46,12 @@
         color: #333;
     }
 }
-@media only screen and (max-width:480px) {
+// @media only screen and (max-width:480px) {
     .actions {
         margin:2em 0 4em 0;
         input, a {
             display: inline-block;
-            margin-left: 2%;
+            margin:0 0 0 2% ;
             text-align: center;
             background: -webkit-gradient(linear, 0 100%, 0 0, from(#f1f1f1), to(#fff));
             background: -moz-linear-gradient(center bottom, #f1f1f1 0%, #fff 100%);
@@ -61,6 +61,7 @@
             padding: 0.5em 0;
             color: #333;
             width: 80%;
+            font-size: 1em;
             &.btn-large {
                 font-size: 1.5em;
             }
@@ -72,7 +73,7 @@
             width: 40%;
         }
     }
-}
+// }
 .modal-backdrop, .modal-backdrop.fade.in {
 opacity: 0.6;
 filter: alpha(opacity=80);
