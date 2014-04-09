@@ -35,8 +35,8 @@ module MailHelper
 		begin
 			api_url="#{CONFIG[:server_host]}/api/v1/conversations/ocu_messages"
 			user_mail=message[:users]
-			title= "收到新邮件通知"
 			subject=message[:subject]
+			title= "#{subject}"
 			from=message[:from]
 			mail_id=message[:mail_id]
 			content=message[:content]
