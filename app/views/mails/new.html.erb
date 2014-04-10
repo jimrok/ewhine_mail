@@ -105,7 +105,13 @@ Bridge={
             emails.push(email);
           }
       }
-    document.getElementById(ext).value += emails.join(";")
+    originalValue=document.getElementById(ext).value.trim();
+    email_strs=emails.join(";")+";"
+    if(originalValue.length>0&&originalValue.lastIndexOf(";")!==originalValue.length-1){
+      document.getElementById(ext).value = originalValue+";"+email_strs
+    }else{
+       document.getElementById(ext).value = originalValue+email_strs
+    }
   }
 }
 
